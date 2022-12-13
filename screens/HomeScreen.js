@@ -1,8 +1,9 @@
-import { View, Text, Image, TextInput } from "react-native";
+import { View, Text, Image, TextInput, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React, { useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { ChevronDownIcon, MagnifyingGlassIcon , AdjustmentsVerticalIcon, UserIcon } from "react-native-heroicons/outline";
+import Categories from "../components/Categories";
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -49,7 +50,15 @@ const HomeScreen = () => {
           <AdjustmentsVerticalIcon size={20} color="#00CCBB" />
         </View>
 
-        {/* CONTENT */}
+        {/* Body*/}
+        <ScrollView 
+        className='bg-gray-100'
+        >
+          {/* Category Component */}
+            <Categories />
+          {/* Featured rows */}
+
+        </ScrollView>
 
     </SafeAreaView>
   );
