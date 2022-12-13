@@ -4,6 +4,7 @@ import React, { useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { ChevronDownIcon, MagnifyingGlassIcon , AdjustmentsVerticalIcon, UserIcon } from "react-native-heroicons/outline";
 import Categories from "../components/Categories";
+import FeaturedRow from "../components/FeaturedRow";
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -53,10 +54,28 @@ const HomeScreen = () => {
         {/* Body*/}
         <ScrollView 
         className='bg-gray-100'
+        contentContainerStyle={{
+          paddingBottom: 150,
+        }}
         >
           {/* Category Component */}
             <Categories />
           {/* Featured rows */}
+            <FeaturedRow 
+              id="123"
+              title="Featured"
+              description="Paid placements from our partners"
+            />
+            <FeaturedRow 
+              id="1234"
+              title="Tasty Discounts"
+              description="Everyone's been enjoying thees juicy discounts!"
+            />
+            <FeaturedRow 
+              id="12345"
+              title="Offers near you!"
+              description="Why not support your local restauran tonight?"
+            />
 
         </ScrollView>
 
