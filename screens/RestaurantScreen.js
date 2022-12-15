@@ -6,9 +6,14 @@ import { ArrowLeftIcon, ChevronRightIcon, StarIcon } from 'react-native-heroicon
 import { MapPinIcon, QuestionMarkCircleIcon } from 'react-native-heroicons/outline'
 import DishRow from '../components/DishRow'
 import BasketIcon from '../components/BasketIcon'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { setRestaurant } from '../features/restaurantSlice'
 
 const RestaurantScreen = () => {
     const navigation = useNavigation()
+    const dispatch = useDispatch()
+
     const {
         params:{
             id,
@@ -23,6 +28,23 @@ const RestaurantScreen = () => {
             lat,
         } 
     } = useRoute()
+
+    useEffect( () => {
+        dispatch(
+            setRestaurant({
+                id,
+                imgUrl,
+                title,
+                rating,
+                genre,
+                address,
+                short_description,
+                dishes,
+                long,
+                lat,
+            })
+        )
+    }, [dispatch])
 
     // hide annoying default navigation header
     useLayoutEffect( () => {
