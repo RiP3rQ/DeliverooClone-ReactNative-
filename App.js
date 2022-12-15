@@ -5,7 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./screens/HomeScreen";
 import RestaurantScreen from "./screens/RestaurantScreen";
-import { store } from './app/store'
+import { store } from './store'
 import { Provider } from 'react-redux'
 
 const Stack = createNativeStackNavigator();
