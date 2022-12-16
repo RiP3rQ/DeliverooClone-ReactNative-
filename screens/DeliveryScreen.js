@@ -6,6 +6,7 @@ import { selectRestaurant } from '../features/restaurantSlice'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { XMarkIcon } from 'react-native-heroicons/outline'
 import * as Progress from "react-native-progress"
+import MapView, {Marker} from 'react-native-maps'
 
 const DeliveryScreen = () => {
   const navigation = useNavigation()
@@ -22,7 +23,7 @@ const DeliveryScreen = () => {
           <Text className="font-light text-white text-lg">Order Help</Text>
         </View>
 
-        <View className="bg-white mx-5 my-2 rounded-md p-6 z-50 shadow-md">
+        <View className="bg-white mx-5 my-2 rounded-md p-6 shadow-md z-50">
           <View className="flex-row justify-between">
               <View>
                 <Text className="text-lg text-gray-400">Estimated Arrival</Text>
@@ -43,7 +44,31 @@ const DeliveryScreen = () => {
           </Text>
         </View>
       </SafeAreaView>
-    {/* MAP CONTAINER */}
+    
+      {/* MAP CONTAINER */}
+        <MapView
+          initialRegion={{
+            latitude: restaurant.lat,
+            longitude: restaurant.long,
+            latitudeDelta: 0.005,
+            longitudeDelta: 0.005,
+          }}
+          className="flex-1 -mt-10 -z-50" 
+          mapType='mutedStandard'
+        >
+          <Marker 
+            coordinate={{
+              latitude: restaurant.lat,
+              longitude: restaurant.long,
+            }}
+            title={restaurant.title}
+            description={restaurant.short_description}
+            identifier="origin"
+            pinColor='#00CCBB'
+          />
+        </MapView>
+
+      {/* BOTTOM AREA */}
       
     </View>
   )
